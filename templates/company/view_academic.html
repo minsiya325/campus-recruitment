@@ -1,0 +1,76 @@
+ {% extends 'company/com_base.html' %}
+ {% block content %}
+     {% load static %}
+
+<div class="site-section bg-light">
+      <div class="container">
+{#        <div class="row justify-content-center mb-5 element-animate">#}
+{#          <div class="col-md-7 text-center section-heading">#}
+{#            <h2 class="text-primary heading">Popular Courses</h2>#}
+{#            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>#}
+{#            <p><a href="#" class="btn btn-primary py-2 px-4"><span class="ion-ios-book mr-2"></span>Enroll Now</a></p>#}
+{#          </div>#}
+{#        </div>#}
+      </div>
+
+    <div class="about_story">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="story_heading">
+                       <br><br>
+                    </div>
+
+                        <div class="col-lg-11 offset-lg-1">
+                            <div class="story_info">
+
+                                                   {% if message %}
+                                    <script>
+                                    alert("{{ message }}")
+                                    </script>
+                                    {% endif %}
+                                    <table class="table table-bordered table-striped table-hover">
+
+                                    <th class="info">Academic Details</th>
+
+
+
+
+
+
+
+                                    {% for stu in ap  %}
+
+                                    <tr>
+
+                                        <td>Ten'th Percentage :{{ stu.ten_p}}<br>
+                                            Te'th Percentage :{{ stu.twe_p}}<br>
+                                            Semester :{{ stu.sem}}<br>
+                                            CV :<a href="{{ stu.cv.url}}">CV</a><br>
+                                            Course :{{ stu.course.co_name}}<br>
+
+                                        </td>
+
+
+
+
+
+
+
+                                    </tr>
+
+                                        {% endfor %}
+                                    </table>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ {% endblock %}

@@ -1,0 +1,99 @@
+ {% extends 'admin/admin_base.html' %}
+ {% block content %}
+     {% load static %}
+
+<div class="site-section bg-light">
+      <div class="container">
+{#        <div class="row justify-content-center mb-5 element-animate">#}
+{#          <div class="col-md-7 text-center section-heading">#}
+{#            <h2 class="text-primary heading">Popular Courses</h2>#}
+{#            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>#}
+{#            <p><a href="#" class="btn btn-primary py-2 px-4"><span class="ion-ios-book mr-2"></span>Enroll Now</a></p>#}
+{#          </div>#}
+{#        </div>#}
+      </div>
+<div style="padding-left: 200px;padding-top: 50px">
+<form method="get">
+    {% csrf_token %}
+    {{ myFilter.form }}
+    <button type="submit">Search</button>
+</form>
+</div>
+    <div class="about_story">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="story_heading">
+                       <br><br>
+                    </div>
+
+                        <div class="col-lg-11 offset-lg-1">
+                            <div class="story_info">
+
+                                                   {% if message %}
+                                    <script>
+                                    alert("{{ message }}")
+                                    </script>
+                                    {% endif %}
+                                    <table class="table table-bordered table-striped table-hover">
+                                    <th class="info">Photo</th>
+                                    <th class="info">Student Details</th>
+                                    <th class="info">Company Details</th>
+                                    <th class="info">Job Details</th>
+
+
+
+
+
+
+
+
+                                    {% for stu in ap  %}
+
+                                    <tr>
+                                        <td><img src="{{ stu.student.image.url}}" width="100px"></td>
+                                        <td>{{ stu.student.user.first_name}}<br>
+                                            {{ stu.student.saddress}}<br>
+                                            {{ stu.student.scontact}}<br>
+                                            {{ stu.student.adno}}<br>
+
+                                        </td>
+                                        <td>{{ stu.jobapply.job.company.user.first_name}}<br>
+                                            {{ stu.jobapply.job.company.address}}<br>
+                                            {{ stu.jobapply.job.company.contact}}<br>
+                                            {{ stu.jobapply.job.company.website}}<br>
+
+                                        </td>
+                                        <td>
+                                            {{ stu.jobapply.job.p_name}}<br>
+                                            {{ stu.jobapply.job.department}}<br>
+                                            {{ stu.jobapply.job.p_sem}}<br>
+                                            {{ stu.jobapply.job.p_per}}<br>
+                                            {{ stu.jobapply.job.salary}}<br>
+
+
+                                        </td>
+
+
+
+
+
+
+
+                                    </tr>
+
+                                        {% endfor %}
+                                    </table>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ {% endblock %}

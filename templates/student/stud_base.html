@@ -1,0 +1,384 @@
+{% load static %}
+
+ <!doctype html>
+<html lang="en">
+  <head>
+    <title>CampusReq</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'fonts/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+
+    <header role="banner">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand absolute" href="/student">CampusReq</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="/student">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="courses.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+
+                    <a class="dropdown-item" href="AddAcademic">Academic Details</a>
+                    {% if up == 'OK' %}
+                    <a class="dropdown-item" href="UpdateProfile">Update Profile</a>
+                    {% endif %}
+
+
+                </div>
+
+              </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="courses.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Placements</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+
+                    <a class="dropdown-item" href="ViewPlacements">View</a>
+                    <a class="dropdown-item" href="MyApply">My Apply</a>
+
+
+
+                </div>
+
+              </li>
+            {% if pl == 'Yes' %}
+                <li class="nav-item">
+                <a class="nav-link" href="PlacedStudents">Placed</a>
+              </li>
+            {% endif %}
+
+
+
+              <li class="nav-item">
+                <a class="nav-link" href="logout/">Logout</a>
+              </li>
+
+            </ul>
+              <ul class="navbar-nav absolute-right">
+              <li>
+                <button class="btn btn-primary px-5 py-2" onclick="document.getElementById('id01').style.display='block'">Chat</button>
+              </li>
+            </ul>
+
+
+          </div>
+        </div>
+      </nav>
+    </header>
+        {% block content %}
+
+  {% endblock %}
+    <style type="text/css">
+
+    .container{max-width:1170px; margin:auto;}
+img{ max-width:100%;}
+.inbox_people {
+  background: #f8f8f8 none repeat scroll 0 0;
+  float: left;
+  overflow: hidden;
+  width: 40%; border-right:1px solid #000000;
+}
+.inbox_msg {
+  border: 1px solid #050101;
+  clear: both;
+  overflow: hidden;
+}
+.top_spac{ margin: 20px 0 0;}
+
+
+.recent_heading {float: left; width:40%;}
+.srch_bar {
+  display: inline-block;
+  text-align: right;
+  width: 60%; padding:
+}
+.headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #090202;}
+
+.recent_heading h4 {
+  color: #05728f;
+  font-size: 21px;
+  margin: auto;
+}
+.srch_bar input{ border:1px solid #cdcdcd; border-width:0 0 1px 0; width:80%; padding:2px 0 4px 6px; background:none;}
+.srch_bar .input-group-addon button {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  padding: 0;
+  color: #070202;
+  font-size: 18px;
+}
+.srch_bar .input-group-addon { margin: 0 0 0 -27px;}
+
+.chat_ib h5{ font-size:15px; color:#464646; margin:0 0 8px 0;}
+.chat_ib h5 span{ font-size:13px; float:right;}
+.chat_ib p{ font-size:14px; color:#989898; margin:auto}
+.chat_img {
+  float: left;
+  width: 11%;
+}
+.chat_ib {
+  float: left;
+  padding: 0 0 0 15px;
+  width: 88%;
+}
+
+.chat_people{ overflow:hidden; clear:both;}
+.chat_list {
+  border-bottom: 1px solid #c4c4c4;
+  margin: 0;
+  padding: 18px 16px 10px;
+}
+.inbox_chat { height: 550px; overflow-y: scroll;}
+
+.active_chat{ background:#ebebeb;}
+
+.incoming_msg_img {
+  display: inline-block;
+  width: 6%;
+}
+.received_msg {
+  display: inline-block;
+  padding: 0 0 0 10px;
+  vertical-align: top;
+  width: 92%;
+ }
+ .received_withd_msg p {
+  background: #ebebeb none repeat scroll 0 0;
+  border-radius: 3px;
+  color: #11cbd7;;
+  font-size: 14px;
+  margin: 0;
+  padding: 5px 10px 5px 12px;
+  width: 100%;
+}
+.time_date {
+  color: #747474;
+  display: block;
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+.received_withd_msg { width: 57%;}
+.mesgs {
+  float: left;
+  padding: 30px 15px 0 25px;
+  width: 100%;
+  background-color: #fcfefa;
+}
+
+ .sent_msg p {
+  background: #11cbd7; none repeat scroll 0 0;
+  border-radius: 3px;
+  font-size: 14px;
+  margin: 0; color:#fff;
+  padding: 5px 10px 5px 12px;
+  width:100%;
+}
+.outgoing_msg{ overflow:hidden; margin:26px 0 26px;}
+.sent_msg {
+  float: right;
+  width: 46%;
+
+}
+.input_msg_write input {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #4c4c4c;
+  font-size: 15px;
+  min-height: 48px;
+  width: 100%;
+}
+
+.type_msg {border-top: 1px solid #c4c4c4;position: relative;}
+.msg_send_btn {
+  background: #11cbd7 none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  height: 33px;
+  position: absolute;
+  right: 0;
+  top: 11px;
+  width: 33px;
+}
+.messaging { padding: 0 0 50px 0;}
+.msg_history {
+  height: 450px;
+  overflow-y: auto;
+}
+    </style>
+
+
+    <div id="id01" class="modal" style="padding-top: 90px;padding-left: 1060px">
+        <section class="popular-course-area section-gap">
+				<div class="container">
+{#					<div class="row d-flex justify-content-center">#}
+{#						<div class="menu-content pb-70 col-lg-8">#}
+{#							<div class="title text-center">#}
+{#								<h1 class="mb-10">Chat With Your Group Members</h1>#}
+{#								<p>MEMBERS</p>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+
+
+{#    <h3 class=" text-center">MESSAGE YOUR GROUP MEMBERS</h3>#}
+
+<div class="messaging">
+      <div class="inbox_msg">
+{#        <div class="inbox_people">#}
+{#          <div class="headind_srch">#}
+{#            <div class="recent_heading">#}
+{#              <h4><a href="">GROUP LIST</a></h4>#}
+{#            </div>#}
+{#          </div>#}
+{#          <div class="inbox_chat">#}
+{#              {% for gr in groups %}#}
+{#                  <a href="chat_members?id={{ gr.id }}" class="" >#}
+{#                      <div class="chat_list">#}
+{#                          <div class="chat_people">#}
+{#                              <div class="img_chat"> <img src="{{ gr.image.url }}" alt="sunil"> </div>#}
+{#                              <div class="chat_ib">#}
+{#                                  <h5>{{ gr.gpname }}<span class="chat_date">{{ gr.date }}</span></h5>#}
+{#                              </div>#}
+{#                          </div>#}
+{#                      </div>#}
+{#                  </a>#}
+{#              {% endfor %}#}
+{#          </div>#}
+{#        </div>#}
+        <div class="mesgs">
+          <div class="msg_history" id="scroll" >
+
+
+            {% for chat in chat %}
+                {% if chat.sender == s.user.first_name %}
+                    <div class="outgoing_msg">
+                        <div class="sent_msg">
+                            <span class="time_date">{{ chat.group.user.user.first_name }}</span>
+                            <p>{{ chat.message }}</p>
+                            <span class="time_date">{{ chat.time }}</span>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="incoming_msg">
+{#                        <div class="incoming_msg_img">  </div>#}
+                        <div class="received_msg">
+                            <div class="received_withd_msg">
+                                <span class="time_date">{{ chat.sender }}</span>
+                                <p>{{ chat.message }}</p>
+                                <span class="time_date">{{ chat.time }}</span>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+
+          </div>
+        <a href="" onclick="document.getElementById('id01').style.display='none'" title="Close Chat">&#10005;</a>
+          <div class="type_msg">
+            <div class="input_msg_write">
+
+                <form method="post" action="Chat">
+                    {% csrf_token %}
+                  <input type="text" name="message" style="color: #11cbd7" class="write_msg" placeholder="Type a message" autocomplete="off" />
+
+                  <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+{#</div>#}
+    <script>
+        setInterval(updateScroll,10000);
+        var scrolled = false;
+        function updateScroll(){
+            if(!scrolled){
+                var element = document.getElementById("scroll");
+                element.scrollTop = element.scrollHeight;
+            }
+        }
+        $("#scroll").on('scroll', function(){
+            scrolled=true;
+        });
+
+    </script>
+    </section>
+
+{#  <form class="modal-content animate" method="post" style="width: 440px;height: 70vh;display: flex;margin: auto;align-items: center;justify-content: center;" action="post_action.php">#}
+{##}
+{##}
+{#    <div class="container" style="">#}
+{#        <button onclick="document.getElementById('id01').style.display='none'" class="post-cata cata-sm cata-danger" title="Close Modal">Close</button>#}
+{#        <img src="img/<?php echo $data['photo']; ?>" style="border-radius: 50%" width="50px" alt="">#}
+{#     <center>#}
+{#      <input type="text" placeholder="Title..." autocomplete="off" name="title" required style="width:60% !important;border: none;font-size: 35px;border-bottom: 2px solid silver" ><br><br>#}
+{#      <input type="text" placeholder="Your text here..." autocomplete="off" name="text" required style="width:60% !important;border: none;border-bottom: 2px solid silver" ><br><br>#}
+{##}
+{#      <input type="hidden" name="user_id" value="<?php echo $data['login_id']; ?>">#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#      <span style="padding-left: 300px"></span>#}
+{##}
+{#      <button  style="left: 100%" class="post-cata cata-sm cata-primary" type="submit" value="" name="Text">Post</button>#}
+{#      </center>#}
+{#    </div>#}
+{##}
+{#  </form>#}
+</div>
+
+
+
+
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-3.0.0.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
+

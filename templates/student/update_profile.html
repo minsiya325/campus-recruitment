@@ -1,0 +1,183 @@
+{% extends 'student/stud_base.html' %}
+ {% block content %}
+     {% load static %}
+      {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+
+{#            <section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url({% static 'images/com.jpg' %});">#}
+{#      <div class="container">#}
+{#        <div class="row align-items-center justify-content-center site-hero-sm-inner">#}
+{#          <div class="col-md-7 text-center">#}
+{##}
+{#            <div class="mb-5 element-animate">#}
+{#              <h1 class="mb-2">My Profile</h1>#}
+{#              <p class="bcrumb"><a href="index.html">Home</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">Volunteer</span></p>#}
+{#            </div>#}
+{##}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </section>#}
+    <!-- END section -->
+     <div class="site-section bg-light">
+      <div class="container">
+{#        <div class="row justify-content-center mb-5 element-animate">#}
+{#          <div class="col-md-7 text-center section-heading">#}
+{#            <h2 class="text-primary heading">Popular Courses</h2>#}
+{#            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>#}
+{#            <p><a href="#" class="btn btn-primary py-2 px-4"><span class="ion-ios-book mr-2"></span>Enroll Now</a></p>#}
+{#          </div>#}
+{#        </div>#}
+      </div>
+
+    <section class="site-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7">
+{#            <div class="form-wrap">#}
+{#              <h2 class="mb-5">Add Academics</h2>#}
+{#              <form method="post" enctype="multipart/form-data">#}
+{##}
+{#{% csrf_token %}#}
+{##}
+{##}
+{#                  <div class="row">#}
+{#                    <div class="col-md-12 form-group">#}
+{#                      <label for="name">10th Percentage</label>#}
+{#                      <input type="number" id="name" name="ten" autocomplete="off" required class="form-control py-2">#}
+{#                    </div>#}
+{#                  </div>#}
+{#                  <div class="row">#}
+{#                    <div class="col-md-12 form-group">#}
+{#                      <label for="name">12th Percentage</label>#}
+{#                      <input type="number" id="name" name="two" autocomplete="off" required class="form-control py-2">#}
+{#                    </div>#}
+{#                  </div>#}
+{#                  <div class="row">#}
+{#                    <div class="col-md-12 form-group">#}
+{#                      <label for="name">Current Course</label>#}
+{#                        <select name="course" required class="form-control py-2">#}
+{#                            <option value="">Select Course</option>#}
+{#                            {% for co in co %}#}
+{#                            <option value="{{ co.id }}">{{ co.co_name }}</option>#}
+{#                            {% endfor %}#}
+{##}
+{#                        </select>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                  <div class="row">#}
+{#                    <div class="col-md-12 form-group">#}
+{#                      <label for="name">Current Sem</label>#}
+{#                      <input type="number" id="name" name="csem" autocomplete="off" required class="form-control py-2">#}
+{#                    </div>#}
+{#                  </div>#}
+{##}
+{#                  <div class="row mb-5">#}
+{#                    <div class="col-md-12 form-group">#}
+{#                      <label for="name">Upload CV</label>#}
+{#                      <input type="file" name="cv" id="name" autocomplete="off" required class="form-control py-2">#}
+{#                    </div>#}
+{#                  </div>#}
+{##}
+{##}
+{##}
+{#                  <div class="row">#}
+{#                    <div class="col-md-6 form-group">#}
+{#                      <input type="submit" value="Add" class="btn btn-primary px-5 py-2">#}
+{#                    </div>#}
+{#                  </div>#}
+{#                </form>#}
+{#              </div>#}
+              <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+              <table style="padding-top:10px;margin-left: auto;width: 100%;background-color: whitesmoke;border-radius: 5%">
+                  <tr style="">
+                      <td>{{ co.user.first_name }}</td>
+                      <td colspan="2" align="center">
+
+                          <input name="profile" id="pho" value="{{ co.image }}" type="file" style="visibility: hidden">
+                              <label for="pho">
+                                <img src="{{ co.image.url }}" title="Upload Photo" width="100px">
+                                  </label>
+
+                      </td>
+
+                    <input type="hidden" name="pimage" value="{{ co.image }}">
+                  </tr>
+                  <tr>
+                      <td style="color: #11cbd7;">Personal Details</td>
+                  </tr>
+                    <tr>
+                      <td>DOB     : </td>
+                      <td><input class="form-control py-2" readonly name="" value="{{ co.dob }}"></td>
+                  </tr>
+                  <tr>
+                      <td>Gender     : </td>
+                      <td><input class="form-control py-2" readonly name="" value="{{ co.gender }}"></td>
+                  </tr>
+
+                  <tr>
+                      <td>Address     : </td>
+                      <td><input class="form-control py-2" name="address" value="{{ co.saddress }}"></td>
+                  </tr>
+                  <tr>
+                      <td>Contact  :</td>
+                          <td><input class="form-control py-2" name="contact" value=" {{ co.scontact }}"></td>
+                  </tr>
+                  <tr>
+                      <td>Email  :</td>
+                          <td><input readonly class="form-control py-2" value=" {{ co.user.email }}"></td>
+                  </tr>
+
+
+                  <tr>
+                      <td style="color: #11cbd7;" width="100px" colspan="2">Academic Details</td>
+                  </tr>
+                  <tr>
+                      <td>Admission No.  : </td>
+                      <td><input class="form-control py-2" readonly value="{{ co.adno }}"></td>
+                  </tr>
+
+                  <tr>
+                      <td>Ten'th  : </td>
+                      <td><input class="form-control py-2" readonly value=" {{ ac.ten_p }}"></td>
+                  </tr>
+                  <tr>
+                      <td>12'th  :</td>
+                      <td><input class="form-control py-2" readonly value=" {{ ac.twe_p }}"></td>
+                  </tr>
+                  <tr>
+                      <td>Current Course  : </td>
+                      <td><input class="form-control py-2" readonly value=" {{ ac.course.name }}"></td>
+                  </tr>
+                  <tr>
+                      <td>Semester  : </td>
+                      <td><input class="form-control py-2" name="sem" value="{{ ac.sem }}"></td>
+                  </tr>
+                  <tr>
+                      <br><td colspan="2" align="right"><button type="submit" class="btn btn-primary px-5 py-2">Update</button></td>
+                  </tr>
+                  <tr>
+                      <td style="color: #11cbd7;" width="100px" colspan="2">Login Details</td>
+                  </tr>
+
+                  <tr>
+                      <td>--------- </td>
+                      <td>
+                          <a href="changepassword" class="btn btn-primary px-5 py-2">Change Password</a>
+                      </td>
+                  </tr>
+
+
+
+              </table>
+                   </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
+
+

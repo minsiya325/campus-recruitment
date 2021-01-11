@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+ {% block content %}
+     {% load static %}
+      {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+
+      <section class="site-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url({% static 'images/campus20hiring20cover-01.jpg' %});">
+      <div class="container">
+        <div class="row align-items-center justify-content-center site-hero-inner">
+          <div class="col-md-10">
+
+            <div class="mb-5 element-animate">
+              <div class="block-17">
+                <h2 class="heading text-center mb-4">CAMPUS RECRUITMENT</h2>
+
+                <p class="text-center mb-5">We have more than 500 Company to improve your skills</p>
+                <p class="text-center"><a href="login" class="btn py-3 px-5">Join Now</a></p>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+     <div class="container site-section element-animate">
+      <div class="row justify-content-center mb-5 element-animate">
+          <div class="col-md-7 text-center section-heading">
+            <h2 class="text-primary heading">Placed Students</h2>
+          </div>
+        </div>
+                  {% for foo in ap %}
+
+
+
+      <div class="block-3 d-md-flex pt-5">
+        <div class="image" style="background-image: url({{ foo.student.image.url }}); "></div>
+        <div class="text">
+          <h4 class="subheading">{{ foo.place_status }}</h4>
+          <h2 class="heading">{{ foo.student.user.first_name }} Is Placed In {{ foo.company.user.first_name }}</h2>
+          <p>As {{ foo.jobapply.job.p_name }}</p>
+        </div>
+      </div>
+                  {% endfor %}
+                  </div>
+    <!-- END section -->
+
+
+
+{% endblock %}

@@ -1,0 +1,90 @@
+ {% extends 'student/stud_base.html' %}
+ {% block content %}
+     {% load static %}
+
+<div class="site-section bg-light">
+      <div class="container">
+{#        <div class="row justify-content-center mb-5 element-animate">#}
+{#          <div class="col-md-7 text-center section-heading">#}
+{#            <h2 class="text-primary heading">Popular Courses</h2>#}
+{#            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>#}
+{#            <p><a href="#" class="btn btn-primary py-2 px-4"><span class="ion-ios-book mr-2"></span>Enroll Now</a></p>#}
+{#          </div>#}
+{#        </div>#}
+      </div>
+
+    <div class="about_story">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="story_heading">
+                       <br><br>
+                    </div>
+
+                        <div class="col-lg-11 offset-lg-1">
+                            <div class="story_info">
+
+                                                   {% if message %}
+                                    <script>
+                                    alert("{{ message }}")
+                                    </script>
+                                    {% endif %}
+                                    <table class="table table-bordered table-striped table-hover">
+                                    <th class="info">Job Details</th>
+
+                                    <th class="info">Drive Details</th>
+                                    <th class="info">Company Details</th>
+                                    <th class="info">Status</th>
+
+
+
+
+                                    {% for stu in ap  %}
+
+                                    <tr>
+                                        <td>{{ stu.job.p_name}}<br>
+                                            Dept :{{ stu.job.department}}<br>
+                                            Salary :{{ stu.job.salary}}<br>
+                                            Desc :{{ stu.job.job_desc}}<br>
+                                            Course :{{ stu.job.p_course.co_name}}<br>
+                                            Semester :{{ stu.job.p_sem}}<br>
+                                            Percentage: {{ stu.job.p_per}}%<br>
+                                            Vacancies :{{ stu.job.no_vacan}}<br>
+                                            Last Date :{{ stu.job.last_date}}<br>
+                                        </td>
+                                        <td>{{ stu.job.drive.p_name}}<br>
+                                            Place :{{ stu.job.drive.p_address}}<br>
+                                            Contact :{{ stu.job.drive.p_contact}}<br>
+                                            Date :{{ stu.job.drive.p_date}}<br>
+                                            Time :{{ stu.job.drive.p_time}}<br>
+                                        </td>
+                                         <td>
+                                             {{ stu.job.company.user.first_name}}<br>
+                                            Address :{{ stu.job.company.address}}<br>
+                                            Contact :{{ stu.job.company.contact}}<br>
+                                            Web :{{ stu.job.company.website}}<br>
+                                         </td>
+                                        <td>{{ stu.a_status}}</td>
+
+
+
+
+
+
+                                    </tr>
+
+                                        {% endfor %}
+                                    </table>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ {% endblock %}

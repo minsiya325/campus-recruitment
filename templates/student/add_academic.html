@@ -1,0 +1,167 @@
+{% extends 'student/stud_base.html' %}
+ {% block content %}
+     {% load static %}
+      {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+{##}
+{#            <section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url({% static 'images/com.jpg' %});">#}
+{#      <div class="container">#}
+{#        <div class="row align-items-center justify-content-center site-hero-sm-inner">#}
+{#          <div class="col-md-7 text-center">#}
+{##}
+{#            <div class="mb-5 element-animate">#}
+{#              <h1 class="mb-2">Add Academics</h1>#}
+{#              <p class="bcrumb"><a href="index.html">Home</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">Volunteer</span></p>#}
+{#            </div>#}
+{##}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </section>#}
+    <!-- END section -->
+     <div class="site-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5 element-animate">
+          <div class="col-md-7 text-center section-heading">
+{#            <h2 class="text-primary heading">Popular Courses</h2>#}
+{#            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>#}
+{#            <p><a href="#" class="btn btn-primary py-2 px-4"><span class="ion-ios-book mr-2"></span>Enroll Now</a></p>#}
+          </div>
+        </div>
+      </div>
+     <script>
+
+
+
+            function Show() {
+
+            // body...
+
+              var di=document.getElementById("select").value;
+
+
+                var fields = di.split('_');
+
+                var id = fields[0];
+                var gradu = fields[1];
+
+              if(gradu=='Post Graduates')
+              {
+
+                document.getElementById("per").style.display="inline";
+                  var resultContainer = document.getElementById('ids').value
+                    =id;
+
+
+                //document.getElementById("file").style.display="inline";
+
+              }
+              else{
+
+                document.getElementById("per").style.display="none";
+                  var resultContai = document.getElementById('ids').value
+                    =id;
+
+
+                //document.getElementById("file").style.display="none";
+              }
+
+           }
+            function loadwin(){
+                document.getElementById("per").style.display="none";
+            }
+            window.onload = function () {
+            // body...
+                loadwin();
+
+
+
+
+           }
+
+     </script>
+
+    <section class="site-section">
+      <div class="container" onload="loadwin();">
+        <div class="row justify-content-center">
+          <div class="col-md-7">
+            <div class="form-wrap">
+              <h2 class="mb-5">Add Academics</h2>
+              <form method="post"  enctype="multipart/form-data">
+
+{% csrf_token %}
+
+
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="name">10th Percentage</label>
+                      <input type="number" id="name" name="ten" autocomplete="off" required class="form-control py-2">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="name">12th Percentage</label>
+                      <input type="number" id="name" name="two" autocomplete="off" required class="form-control py-2">
+                    </div>
+                  </div>
+
+                    <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="name">Batch</label>
+                      <input type="text" id="name" name="batch" autocomplete="off" pattern="[0-9]{4}-[0-9]{4}" required class="form-control py-2" title="Please Choose YYYY-YYYY Format.">
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="name">Current Course</label>
+                        <select title="Course" required id="select" class="form-control py-2" onchange="Show();">
+                            <option value="">Select Course</option>
+                            {% for co in co %}
+                            <option value="{{ co.id }}_{{ co.graduate }}">{{ co.name }}</option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+                  </div>
+              <input name="course" type="hidden" id="ids">
+
+              <div class="row" id="per">
+                    <div class="col-md-12 form-group">
+                      <label for="name">UG Percentage</label>
+                      <input type="number" id="name" name="percent" autocomplete="off" class="form-control py-2">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="name">Current Sem</label>
+                      <input type="number" id="name" name="csem" autocomplete="off" required class="form-control py-2">
+                    </div>
+                  </div>
+
+                  <div class="row mb-5">
+                    <div class="col-md-12 form-group">
+                      <label for="name">Upload CV</label>
+                      <input type="file" name="cv" id="name" autocomplete="off" required class="form-control py-2">
+                    </div>
+                  </div>
+
+
+
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <input type="submit" value="Add" class="btn btn-primary px-5 py-2">
+                    </div>
+                  </div>
+                </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
+
+

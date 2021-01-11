@@ -1,0 +1,67 @@
+{% extends 'admin/admin_base.html' %}
+ {% block content %}
+     {% load static %}
+      {% if message %}
+         <script> alert("{{ message }}")</script>
+     {% endif %}
+
+            <section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url({% static 'images/com.jpg' %});">
+      <div class="container">
+        <div class="row align-items-center justify-content-center site-hero-sm-inner">
+          <div class="col-md-7 text-center">
+
+            <div class="mb-5 element-animate">
+              <h1 class="mb-2">Add Course</h1>
+              <p class="bcrumb"><a href="index.html">Home</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">Volunteer</span></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
+
+    <section class="site-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7">
+            <div class="form-wrap">
+              <h2 class="mb-5">Add Course</h2>
+              <form method="post" enctype="multipart/form-data">
+
+{% csrf_token %}
+
+
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="name">Course Name</label>
+                      <input type="text" id="name" name="name" autocomplete="off" required class="form-control py-2">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="name">Place/Address</label>
+                        <select required name="gradu" class="form-control py-2">
+                            <option value="">Select Graduates</option>
+                            <option>Under Graduates</option>
+                            <option>Post Graduates</option>
+                        </select>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <input type="submit" value="Add" class="btn btn-primary px-5 py-2">
+                    </div>
+                  </div>
+                </form>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
+
+

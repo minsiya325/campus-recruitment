@@ -1,0 +1,54 @@
+ {% extends 'company/com_base.html' %}
+ {% block content %}
+     {% load static %}
+<div class="site-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5 element-animate">
+          <div class="col-md-7 text-center section-heading">
+            <h2 class="text-primary heading">Drive Details</h2>
+          </div>
+
+        </div>
+
+      </div>
+<div style="padding-left: 370px">
+    <h2>Drive Details</h2>
+        <h4 style="padding-left: 40px">Name :{{ pl.p_name }}</h4>
+        <h4 style="padding-left: 40px">Place :{{ pl.p_address }},{{ pl.p_contact }}</h4>
+        <h4 style="padding-left: 40px">Date :{{ pl.p_date }}</h4>
+        <h4 style="padding-left: 40px">Time :{{ pl.p_time }}</h4>
+
+</div><br>
+<div style="padding-left: 370px">
+    <h2>Vacancies Added</h2>
+
+</div>
+
+      <div class="container-fluid block-11 element-animate" align="center">
+
+            <div style="width: 800px">
+
+            {% for co in com %}
+          <div class="item">
+            <div class="block-19">
+
+                <div class="text">
+                  <h2 class="heading"><a href="#">{{ co.p_name }}</a></h2>
+                  <p class="mb-4">Job Posted By {{ co.company.user.first_name }}</p>
+                  <div class="meta d-flex align-items-center">
+                    <div class="number">
+                      <span>Salary Offered: {{ co.salary }}</span>
+                    </div>
+                    <div class="price text-right"><a href="studapplication?id={{ co.id }}" class="btn btn-primary py-2 px-4">Student Application</a></div>
+                  </div>
+                </div>
+              </div>
+          </div><br><br>
+            {% endfor %}
+            </div>
+
+
+    </div>
+</div>
+
+ {% endblock %}
